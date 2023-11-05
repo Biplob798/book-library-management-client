@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
@@ -49,6 +49,21 @@ const Navbar = () => {
               ? "text-amber-800 underline font-bold text-base"
               : " font-semibold "
           }
+          to="/about"
+        >
+          {" "}
+          About Us{" "}
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-amber-800 underline font-bold text-base"
+              : " font-semibold "
+          }
           to="/allBook"
         >
           {" "}
@@ -72,19 +87,23 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-amber-800 underline font-bold text-base"
-              : " font-semibold "
-          }
-          to="/login"
-        >
-          {" "}
-          Login{" "}
-        </NavLink>
+        {user?.email ? (
+          ""
+        ) : (
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-amber-800 underline font-bold text-base"
+                : " font-semibold "
+            }
+            to="/login"
+          >
+            {" "}
+            Login{" "}
+          </NavLink>
+        )}
       </li>
     </>
   );
@@ -112,7 +131,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#101b2d] text-white rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#603814] text-white rounded-box w-52"
             >
               {navLinks}
             </ul>
@@ -150,7 +169,7 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/login">Login</Link>
+            ""
           )}
         </div>
       </div>

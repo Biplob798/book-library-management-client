@@ -14,6 +14,9 @@ const Register = () => {
 
   const navigate = useNavigate();
   console.log("babu user", user);
+
+  // handle register
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -66,8 +69,7 @@ const Register = () => {
 
   return (
     <div>
-      this is register page
-      <div className="hero min-h-screen p-8 bg-white text-black ">
+      <div className="hero min-h-screen my-6 p-8 bg-gray-200 text-black ">
         <div className="hero-content flex-col bg-white text-black">
           <div className="text-center lg:text-left"></div>
           <div className="card flex-shrink-0 w-full max-w-sm  bg-white text-black border">
@@ -130,7 +132,7 @@ const Register = () => {
                     {/* show password ar handle  */}
                     <span
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute "
+                      className="absolute right-3"
                     >
                       {showPassword ? (
                         <FaEye></FaEye>
@@ -164,7 +166,7 @@ const Register = () => {
               </div>
             </form>
             {registerError && (
-              <p className="text-medium text-red-400 p-2 text-center">
+              <p className="text-sm text-red-400 p-2 text-center">
                 {registerError}
               </p>
             )}
