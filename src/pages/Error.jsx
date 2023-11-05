@@ -8,7 +8,9 @@ const Error = () => {
         <img src={banner} alt="" />
       </div>
       <Link to="/">
-        <p className="text-center">Back Home</p>
+        <p className="text-center font-bold mx-auto max-w-xl border-x-2">
+          Back Home
+        </p>
       </Link>
     </div>
   );
