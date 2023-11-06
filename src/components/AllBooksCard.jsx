@@ -4,16 +4,17 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Books = ({ booksCard }) => {
-  const { _id, category, image } = booksCard;
+const AllBooksCard = ({ AllBooksCard }) => {
+  console.log(AllBooksCard);
 
-  console.log(booksCard);
+  const { image, name, author, category, rating } = AllBooksCard;
 
   useEffect(() => {
     Aos.init();
   }, []);
   return (
     <div>
+      {" "}
       <div
         className="card p-6 shadow-md bg-white"
         data-aos="fade-bottom"
@@ -28,14 +29,19 @@ const Books = ({ booksCard }) => {
           <h2 className="card-title text-2xl font-bold text-gray-700">
             {category}!
           </h2>
+          <div className="space-y-3 my-2 font-bold">
+            <h2>{name}</h2>
+            <p>{author}</p>
+            <p>
+              {" "}
+              <span className="text-orange-600">Rating</span> : {rating} star
+            </p>
+          </div>
 
           <div className="card-actions ">
             {" "}
-            <Link to={`booksCategory/${category}`}>
-              {" "}
-              <button className="btn btn-outline bg-teal-600">
-                Collection
-              </button>
+            <Link to="/updateBook">
+              <button className="btn btn-outline bg-teal-600">Update</button>
             </Link>
           </div>
         </div>
@@ -44,7 +50,7 @@ const Books = ({ booksCard }) => {
   );
 };
 
-export default Books;
-Books.propTypes = {
-  booksCard: PropTypes.object,
+export default AllBooksCard;
+AllBooksCard.propTypes = {
+  AllBooksCard: PropTypes.object,
 };

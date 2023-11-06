@@ -8,6 +8,7 @@ import Error from "../pages/Error";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import BooksCategory from "../pages/BooksCategory";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ export const router = createBrowserRouter([
             <AllBook />
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/allBooks"),
       },
       {
         path: "/borrowedBook",
@@ -48,6 +50,16 @@ export const router = createBrowserRouter([
             <BorrowedBook />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/booksCategory/:category",
+        element: (
+          <PrivateRoute>
+            <BooksCategory></BooksCategory>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(` http://localhost:5000/allBooks/${params.category}`),
       },
       {
         path: "/login",
