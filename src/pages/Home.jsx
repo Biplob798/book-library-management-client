@@ -2,6 +2,8 @@ import Banner from "../components/banner/Banner";
 
 import { useLoaderData } from "react-router-dom";
 import Books from "../components/books/Books";
+import PhotoGallery from "../components/photoGallary/PhotoGallery";
+import WhatNew from "../components/WhatNew";
 
 const Home = () => {
   const loadedBooks = useLoaderData();
@@ -26,6 +28,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <WhatNew></WhatNew>
+      <PhotoGallery></PhotoGallery>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Books = ({ booksCard }) => {
-  const { _id, category, image } = booksCard;
+  const { category, image } = booksCard;
 
   console.log(booksCard);
 

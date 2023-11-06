@@ -7,7 +7,7 @@ const BooksCategoryCard = ({ booksCategory }) => {
   useEffect(() => {
     Aos.init();
   }, []);
-  const { _id, name, image, description, category, rating } = booksCategory;
+  const { name, image, category, rating } = booksCategory;
 
   return (
     <div>
