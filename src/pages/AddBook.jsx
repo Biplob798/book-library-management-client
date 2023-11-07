@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
-  const { user } = useContext(AuthContext);
   const handleAddBook = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,7 +23,6 @@ const AddBook = () => {
     };
     console.log(addBooks);
 
-    // send data
     // send data to the server product
     fetch(" http://localhost:5000/addBooks", {
       method: "POST",
@@ -41,7 +37,7 @@ const AddBook = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "success!",
-            text: "Product added successfully",
+            text: "Book added successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });

@@ -1,11 +1,55 @@
 import { useLoaderData } from "react-router-dom";
-import Modal from "../components/Modal";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const ViewDetails = () => {
   const loadedViewDetailsBook = useLoaderData();
   console.log(loadedViewDetailsBook);
 
-  const { _id, image } = loadedViewDetailsBook;
+  const { _id, image, category } = loadedViewDetailsBook;
+
+  const { user } = useContext(AuthContext);
+  const handleBorrowBook = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const returnDate = form.returnDate.value;
+    const borrowDate = form.borrowDate.value;
+    const name = form.name.value;
+    const email = user?.email;
+
+    const borrowBook = {
+      image,
+      category,
+      book_id: _id,
+      returnDate,
+      borrowDate,
+      name,
+      email,
+    };
+    console.log(borrowBook);
+
+    // send data to the server product
+    fetch(" http://localhost:5000/borrowBook", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(borrowBook),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "Borrow Book successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -20,7 +64,80 @@ const ViewDetails = () => {
             />
           </figure>
           <hr className="mt-6 " />
-          <Modal></Modal>
+
+          <div className="flex justify-around items-center py-4 gap-4 border">
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            <button
+              className="btn btn-outline bg-[#ea580c] text-white"
+              onClick={() => document.getElementById("my_modal_1").showModal()}
+            >
+              Borrow Book
+            </button>
+            <dialog id="my_modal_1" className="modal">
+              <div className="modal-box">
+                <div className="space-y-4">
+                  <h2>Return Date</h2>{" "}
+                </div>
+                <div className="modal-action ">
+                  <form onSubmit={handleBorrowBook} className="space-y-6 ">
+                    {/* if there is a button in form, it will close the modal */}
+
+                    <label className="label">
+                      <span className="label-text text-white font-sm text-xl">
+                        Return date
+                      </span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="date"
+                        name="returnDate"
+                        placeholder="Return date"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                    <label className="label">
+                      <span className="label-text text-white font-sm text-xl">
+                        Borrow date
+                      </span>
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="date"
+                        name="borrowDate"
+                        placeholder="Borrow date"
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="name"
+                        defaultValue={user?.displayName}
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                    <label className="input-group">
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                        defaultValue={user?.email}
+                        className="input input-bordered w-full"
+                      />
+                    </label>
+                    <div className="flex justify-between gap-4">
+                      {" "}
+                      <button className="btn">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+            <button className=" btn btn-outline bg-[#ea580c] text-white">
+              Read Book
+            </button>{" "}
+          </div>
           <div className="card-body  text-center  shadow-md ">
             <p className="text-medium text-left font-light text-black ">
               A library is a treasure trove of knowledge, a sanctuary for book
