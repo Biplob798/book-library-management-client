@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const AllBooksCard = ({ AllBooksCard }) => {
   console.log(AllBooksCard);
 
-  const { image, name, author, category, rating } = AllBooksCard;
+  const { _id, image, name, author, category, rating } = AllBooksCard;
 
   useEffect(() => {
     Aos.init();
@@ -40,7 +40,7 @@ const AllBooksCard = ({ AllBooksCard }) => {
 
           <div className="card-actions ">
             {" "}
-            <Link to="/updateBook">
+            <Link to={`/updateBook/${_id}`}>
               <button className="btn btn-outline bg-[#ea580c]">Update</button>
             </Link>
           </div>

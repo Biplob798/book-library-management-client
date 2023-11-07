@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
@@ -134,9 +134,12 @@ const ViewDetails = () => {
                 </div>
               </div>
             </dialog>
-            <button className=" btn btn-outline bg-[#ea580c] text-white">
-              Read Book
-            </button>{" "}
+            <Link to={`/readBook/${_id}`}>
+              {" "}
+              <button className=" btn btn-outline bg-[#ea580c] text-white">
+                Read Book
+              </button>{" "}
+            </Link>
           </div>
           <div className="card-body  text-center  shadow-md ">
             <p className="text-medium text-left font-light text-black ">
