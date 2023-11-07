@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import BooksCategory from "../pages/BooksCategory";
+import ViewDetails from "../pages/ViewDetails";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,18 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(` http://localhost:5000/allBooks/${params.category}`),
       },
+      {
+        path: "/viewDetails/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allBooks/books/${params.id}`),
+      },
+
       {
         path: "/login",
         element: <Login />,

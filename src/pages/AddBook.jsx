@@ -1,4 +1,54 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+
 const AddBook = () => {
+  const { user } = useContext(AuthContext);
+  const handleAddBook = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
+    const author = form.author.value;
+    const category = form.category.value;
+    const rating = form.rating.value;
+    const photo = form.photo.value;
+
+    const addBooks = {
+      name,
+      quantity,
+      description,
+      author,
+      category,
+      rating,
+      photo,
+    };
+    console.log(addBooks);
+
+    // send data
+    // send data to the server product
+    fetch(" http://localhost:5000/addBooks", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addBooks),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "Product added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
+
   return (
     <div>
       <div className="my-12 p-8 bg-white border shadow-md max-w-2xl mx-auto">
@@ -7,12 +57,12 @@ const AddBook = () => {
         </h2>
         <hr className="mb-6" />
 
-        <form className="space-y-6">
+        <form onSubmit={handleAddBook} className="space-y-6">
           {/* form Book name */}
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text text-white font-sm text-xl">
+              <span className="label-text text-black font-sm text-xl">
                 Book name
               </span>
             </label>
@@ -25,11 +75,11 @@ const AddBook = () => {
               />
             </label>
           </div>
-          {/* form for Quantity  */}
+          {/* form for Quantity of book */}
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text text-white font-sm text-xl">
-                Quantity
+              <span className="label-text text-black font-sm text-xl">
+                Quantity of book
               </span>
             </label>
             <label className="input-group">
@@ -44,7 +94,7 @@ const AddBook = () => {
           {/* form short description  */}
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text text-white font-sm text-xl">
+              <span className="label-text text-black font-sm text-xl">
                 Short Description
               </span>
             </label>
@@ -62,8 +112,8 @@ const AddBook = () => {
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text text-white font-sm text-xl">
-                Brand name
+              <span className="label-text text-black font-sm text-xl">
+                Author name
               </span>
             </label>
             <label className="input-group">
@@ -80,15 +130,15 @@ const AddBook = () => {
 
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text text-white font-sm text-xl">
-                Book type
+              <span className="label-text text-black font-sm text-xl">
+                Book category
               </span>
             </label>
             <label className="input-group">
               <input
                 type="text"
-                name="type"
-                placeholder="type"
+                name="category"
+                placeholder="category"
                 className="input input-bordered w-full"
               />
             </label>
@@ -98,7 +148,7 @@ const AddBook = () => {
           <div className="">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-white font-sm text-xl">
+                <span className="label-text text-black font-sm text-xl">
                   Rating
                 </span>
               </label>
@@ -116,7 +166,7 @@ const AddBook = () => {
           <div className="">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text text-white font-sm text-xl">
+                <span className="label-text text-black font-sm text-xl">
                   Photo URL
                 </span>
               </label>

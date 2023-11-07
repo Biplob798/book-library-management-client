@@ -23,7 +23,9 @@ const Banner = () => {
                 journeys.
               </p>
               <div className="flex items-center">
-                <button className="btn btn-primary mr-5">Discover More</button>
+                <button className="btn btn-primary mr-5 bg-[#ea580c]">
+                  Discover More
+                </button>
                 <button className="btn btn-outline btn-secondary">
                   Latest Book
                 </button>

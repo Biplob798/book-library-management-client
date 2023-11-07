@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Books = ({ booksCard }) => {
-  const { category, image } = booksCard;
+  const { _id, category, image } = booksCard;
 
   console.log(booksCard);
 
@@ -25,7 +25,7 @@ const Books = ({ booksCard }) => {
         </figure>
         <hr className="mt-6 " />
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-2xl font-bold text-gray-700">
+          <h2 className="card-title text-2xl font-bold text-orange-500">
             {category}!
           </h2>
 
@@ -33,7 +33,7 @@ const Books = ({ booksCard }) => {
             {" "}
             <Link to={`booksCategory/${category}`}>
               {" "}
-              <button className="btn btn-outline bg-teal-600">
+              <button className="btn btn-outline bg-[#ea580c]">
                 Collection
               </button>
             </Link>

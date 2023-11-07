@@ -41,7 +41,7 @@ const AllBooksCard = ({ AllBooksCard }) => {
           <div className="card-actions ">
             {" "}
             <Link to="/updateBook">
-              <button className="btn btn-outline bg-teal-600">Update</button>
+              <button className="btn btn-outline bg-[#ea580c]">Update</button>
             </Link>
           </div>
         </div>

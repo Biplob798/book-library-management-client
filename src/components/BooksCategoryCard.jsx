@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 const BooksCategoryCard = ({ booksCategory }) => {
   console.log(booksCategory);
   useEffect(() => {
     Aos.init();
   }, []);
-  const { name, image, category, rating } = booksCategory;
+  const { _id, name, image, category, rating } = booksCategory;
 
   return (
     <div>
@@ -41,9 +42,11 @@ const BooksCategoryCard = ({ booksCategory }) => {
 
             <div className="card-actions">
               {" "}
-              <button className="w-full mt-4 btn btn-outline bg-green-700">
-                Book Details
-              </button>
+              <Link to={`/viewDetails/${_id}`}>
+                <button className="w-full mt-4 btn btn-outline bg-[#ea580c]">
+                  View Details
+                </button>
+              </Link>
             </div>
           </div>
         </div>

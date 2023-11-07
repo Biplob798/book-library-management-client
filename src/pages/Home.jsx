@@ -23,7 +23,7 @@ const Home = () => {
           a rich literary experience for all readers.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
-          {loadedBooks.slice(0, 6).map((book) => (
+          {loadedBooks?.slice(0, 6)?.map((book) => (
             <Books key={book.id} booksCard={book}></Books>
           ))}
         </div>

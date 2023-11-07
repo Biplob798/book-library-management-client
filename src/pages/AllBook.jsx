@@ -16,7 +16,7 @@ const AllBook = () => {
         Spanning genres and eras, these books promise endless exploration,
         knowledge, and entertainment for every reader is preference
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
         {loadedAllBooks.slice(6, 22).map((book) => (
           <AllBooksCard key={book.id} AllBooksCard={book}></AllBooksCard>
         ))}
