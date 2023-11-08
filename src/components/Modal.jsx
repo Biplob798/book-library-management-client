@@ -22,7 +22,7 @@ const Modal = () => {
     console.log(borrowBook);
 
     // send data to the server product
-    fetch(" http://localhost:5000/borrowBook", {
+    fetch("     http://localhost:5000/borrowBook", {
       method: "POST",
       headers: {
         "content-type": "application/json",

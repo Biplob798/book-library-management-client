@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/books"),
+        loader: () => fetch(" http://localhost:5000/books"),
       },
       {
         path: "/error",
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             <AllBook />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allBooksCount"),
+        loader: () => fetch(" http://localhost:5000/allBooks"),
       },
       {
         path: "/updateBook/:id",
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allBooks/update/${params.id}`),
+          fetch(` http://localhost:5000/allBooks/update/${params.id}`),
       },
       {
         path: "/borrowedBook",
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allBooks/books/${params.id}`),
+          fetch(` http://localhost:5000/allBooks/books/${params.id}`),
       },
       {
         path: "/readBook/:id",
@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allBooks/readBook/${params.id}`),
+          fetch(` http://localhost:5000/allBooks/readBook/${params.id}`),
       },
 
       {

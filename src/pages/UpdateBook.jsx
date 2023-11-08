@@ -24,7 +24,7 @@ const UpdateBook = () => {
     console.log(updateBook);
     // send data to server
 
-    fetch(`http://localhost:5000/allBooks/update/${_id}`, {
+    fetch(`    http://localhost:5000/allBooks/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
