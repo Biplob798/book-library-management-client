@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useLoaderData } from "react-router-dom";
 import img1 from "../assets/images/nw1.jpeg";
 import img2 from "../assets/images/nw2.jpeg";
@@ -5,7 +6,7 @@ import img3 from "../assets/images/nw3.jpeg";
 import img4 from "../assets/images/nw4.jpeg";
 import img5 from "../assets/images/nw5.jpeg";
 import img6 from "../assets/images/nw6.jpeg";
-import { FaBeer, FaBookOpen } from "react-icons/fa";
+import { FaBookOpen } from "react-icons/fa";
 const ReadBook = () => {
   const loadedReadBook = useLoaderData();
   console.log(loadedReadBook);

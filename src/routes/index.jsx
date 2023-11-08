@@ -43,7 +43,6 @@ export const router = createBrowserRouter([
             <AllBook />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allBooks"),
       },
       {
         path: "/updateBook/:id",
