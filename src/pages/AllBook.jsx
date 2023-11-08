@@ -1,9 +1,17 @@
 import AllBooksCard from "../components/AllBooksCard";
 import { useEffect, useState } from "react";
+// import useAxios from "../hooks/useAxios";
 
 const AllBook = () => {
   const [allBook, setAllBook] = useState([]);
   const url = "http://localhost:5000/allBooks";
+  // const url = "/allBooks";
+
+  // const axiosSecure = useAxios();
+
+  // useEffect(() => {
+  //   axiosSecure.get(url).then((res) => setAllBook(res.data));
+  // }, [axiosSecure]);
 
   useEffect(() => {
     fetch(url, { credentials: "include" })

@@ -109,6 +109,12 @@ const UpdateBook = () => {
                 defaultValue={category}
                 className="input input-bordered w-full"
               />
+              <select>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
             </label>
           </div>
 
