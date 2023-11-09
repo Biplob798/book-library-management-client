@@ -24,13 +24,16 @@ const UpdateBook = () => {
     console.log(updateBook);
     // send data to server
 
-    fetch(`    http://localhost:5000/allBooks/update/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateBook),
-    })
+    fetch(
+      `    https://book-library-management-server.vercel.app/allBooks/update/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateBook),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

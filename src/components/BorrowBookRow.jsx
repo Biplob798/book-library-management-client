@@ -31,5 +31,4 @@ const BorrowBookRow = ({ borrowBook, handleReturnBook }) => {
 export default BorrowBookRow;
 BorrowBookRow.propTypes = {
   borrowBook: PropTypes.object,
-  handleReturnBook: PropTypes.func,
 };

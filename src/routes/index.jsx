@@ -22,7 +22,8 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(" http://localhost:5000/books"),
+        loader: () =>
+          fetch(" https://book-library-management-server.vercel.app/books"),
       },
       {
         path: "/error",
@@ -43,7 +44,8 @@ export const router = createBrowserRouter([
             <AllBook />
           </PrivateRoute>
         ),
-        loader: () => fetch(" http://localhost:5000/allBooks"),
+        loader: () =>
+          fetch(" https://book-library-management-server.vercel.app/allBooks"),
       },
       {
         path: "/updateBook/:id",
@@ -53,7 +55,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(` http://localhost:5000/allBooks/update/${params.id}`),
+          fetch(
+            ` https://book-library-management-server.vercel.app/allBooks/update/${params.id}`
+          ),
       },
       {
         path: "/borrowedBook",
@@ -72,7 +76,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(` http://localhost:5000/allBooks/${params.category}`),
+          fetch(
+            ` https://book-library-management-server.vercel.app/allBooks/${params.category}`
+          ),
       },
       {
         path: "/viewDetails/:id",
@@ -83,7 +89,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(` http://localhost:5000/allBooks/books/${params.id}`),
+          fetch(
+            ` https://book-library-management-server.vercel.app/allBooks/books/${params.id}`
+          ),
       },
       {
         path: "/readBook/:id",
@@ -94,7 +102,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(` http://localhost:5000/allBooks/readBook/${params.id}`),
+          fetch(
+            ` https://book-library-management-server.vercel.app/allBooks/readBook/${params.id}`
+          ),
       },
 
       {
